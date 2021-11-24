@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :api do
-    '/health', to: 
+    get '/health', to: 'api#health'
   end
 
   get '404', to: 'application#page_not_found'

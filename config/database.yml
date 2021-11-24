@@ -1,9 +1,9 @@
 default: &default
-  adapter: postgis
+  adapter: postgresql
   encoding: unicode
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_NAME'] || 'postgres' %>
+  username: <%= ENV['DATABASE_USER'] || 'gitpod' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'gitpod' %>
   port: <%= ENV['DATABASE_PORT'] || '5432' %>
   host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
