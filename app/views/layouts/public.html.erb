@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Truekazo</title>
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <%# <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> %>
+    <style>
+      .tks-gradient-container {
+
+        <%# background: rgb(251,138,63); %>
+        <%# background: radial-gradient(circle, rgba(251,138,63,1) 0%, rgba(252,201,70,1) 100%); %> 
+         background-image: linear-gradient(to right bottom, #eb0fbb, #fc009b, #ff007c, #ff005d, #ff263f, #ff4c2f, #ff691d, #ff8200, #ffa100, #ffc100, #ffe000, #f4ff00);
+      }
+
+      .logo-img {
+        width: 80%;
+        height: auto;
+        min-width: 300px;
+      }
+
+      .phone {
+        border: 1.33vh solid #111;
+        border-radius: 4.5vh;
+      }
+
+      .phone .notch-container {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100px;
+      }
+
+      .phone .notch-container .notch {
+        width: 50%;
+        height: 2.75vh;
+        margin: -1px auto 0 auto;
+        background-color: #111;
+        border-bottom-left-radius: 2.334vh;
+        border-bottom-right-radius: 2.334vh;
+      }
+
+      .phone-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 3.0vh;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

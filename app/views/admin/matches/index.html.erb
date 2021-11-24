@@ -1,0 +1,52 @@
+<div class="flex flex-wrap">
+  <div class="w-full p-3">
+    <div class="bg-white border rounded shadow">
+      <div class="p-5">
+        <h3 class="font-bold text-1xl">
+          <%= @title %>
+        </h3>
+
+        <div class="relative inline-block text-gray-700">
+          <select class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" onChange="javascript:toggleMatchState(event)">
+            <option value="pending">Selecciona opción</option>
+            <option value="pending">Pendientes</option>
+            <option value="finished">Pagados</option>
+            <option value="declined">Finalizados</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+          </div>
+        </div>
+        <% if @matches.size > 0 %>
+          <table class="<%= Vars::TABLE_CLASS %>">
+            <thead>
+              <tr>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">ID usuario </th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Producto usuario</th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">ID usuario solicitante</th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Producto usuario solicitante</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @matches.each do |match| %>
+                <tr>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= link_to match.user&.id, admin_user_path(match.user&.id) %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= match.product&.name %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= link_to match.buyer&.id, admin_user_path(match.buyer&.id) %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= match.buyer_product&.name %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <div class="digg_pagination">
+            <%= will_paginate @matches, :container => false %>
+          </div>
+        <% else %>
+          <%= render partial: 'admin/empty_records' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+
+<main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
+    <% if flash[:alert] %>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <span class="block sm:inline"><%= flash[:alert] %></span>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+        <span class="block sm:inline"><%= flash[:notice] %></span>
+      </div>
+    <% end %>
+
+    <section class="mt-10">
+      <div class="mb-6 pt-3 rounded bg-gray-200">
+        <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Email</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3" %>
+      </div>
+      <div class="mb-6 pt-3 rounded bg-gray-200">
+        <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Contraseña</label>
+        <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-red-600 transition duration-500 px-3 pb-3" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="flex justify-end">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "text-sm text-red-600 hover:text-red-700 hover:underline mb-6" %>
+        </div>
+      <% end %>
+      <%= f.submit "Ingresar", class: "bg-red-600 hover:bg-red-700 text-white font-bold py-2 p-5 rounded shadow-lg hover:shadow-xl transition duration-200" %>
+    </section>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</main>
+
+

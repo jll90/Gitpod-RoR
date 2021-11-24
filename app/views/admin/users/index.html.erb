@@ -1,0 +1,42 @@
+<div class="flex flex-wrap">
+  <div class="w-full p-3">
+    <div class="bg-white border rounded shadow">
+      <div class="p-5">
+        <h3 class="font-bold text-1xl">
+          Usuarios
+        </h3>
+        <% if @users.size > 0 %>
+          <table class="<%= Vars::TABLE_CLASS %>">
+            <thead>
+              <tr>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">ID </th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Email</th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Teléfono</th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Nº Productos</th>
+                <th class="<%= Vars::TABLE_TH_CLASS %>">Nº Swipes</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= link_to user.id, admin_user_path(user.id) %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= user.email || 'n/a' %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= user.phone %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= user.products.count %></td>
+                  <td class="<%= Vars::TABLE_TD_CLASS %>"><%= user.swipes.count %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <div class="digg_pagination">
+            <%= will_paginate @users, :container => false %>
+          </div>
+        <% else %>
+          <%= render partial: 'admin/empty_records' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

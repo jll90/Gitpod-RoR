@@ -1,0 +1,62 @@
+<div class="flex flex-wrap">
+  <div class="w-full p-3">
+    <div class="bg-white border rounded shadow">
+      <div class="p-5">
+        <a href="/admin/users" class="text-red-500 hover:text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+        </a>
+        <h3 class="font-bold text-1xl">
+          Usuario ID <%= @user.id %>
+        </h3>
+        <table class="<%= Vars::TABLE_CLASS %>">
+          <tbody>
+            <tr>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">ID</th>
+              <td class="<%= Vars::TABLE_TD_CLASS %>"><%= @user.id %></td>
+            </tr>
+            <tr>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Nombre</th>
+              <td class="<%= Vars::TABLE_TD_CLASS %>"><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Descripción</th>
+              <td class="<%= Vars::TABLE_TD_CLASS %>"><%= @user.phone %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="text-blue-900"><%= @products.total_entries %> Productos</h3>
+
+        <table class="<%= Vars::TABLE_CLASS %>">
+          <thead>
+            <tr>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Id</th>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Nombre</th>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Descripción</th>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Precio</th>
+              <th class="<%= Vars::TABLE_TH_CLASS %>">Estado</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @products.each do |prod| %>
+              <tr>
+                <td class="<%= Vars::TABLE_TD_CLASS %>"><%= link_to prod.id, admin_product_path(prod.id) %></td>
+                <td class="<%= Vars::TABLE_TD_CLASS %>"><%= prod.name %></td>
+                <td class="<%= Vars::TABLE_TD_CLASS %>"><%= prod.description[0, 20] %>...</td>
+                <td class="<%= Vars::TABLE_TD_CLASS %>"><%= prod.price %></td>
+                <td class="<%= Vars::TABLE_TD_CLASS %>"><%= prod.state %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="digg_pagination">
+          <%= will_paginate @products, :container => false %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
