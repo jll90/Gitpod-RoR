@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-postgres
 USER gitpod
 
 # Install the Ruby version specified in '.ruby-version'
