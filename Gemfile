@@ -15,6 +15,7 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'sass-rails'
+gem 'simple_command'
 gem 'will_paginate'
 
 gem "rack-livereload", group: :development
