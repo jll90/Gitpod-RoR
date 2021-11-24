@@ -37,7 +37,7 @@ module Truekaso
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    # config.api_only = true
     config.exceptions_app = routes
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
@@ -45,11 +45,7 @@ module Truekaso
     config.middleware.use ActionDispatch::Flash
     config.eager_load_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib/services')
-    config.eager_load_paths << Rails.root.join('lib/validations')
     config.assets.precompile += %w[application.js]
-
-    # https://blog.mallow-tech.com/2020/07/activestorage-prevent-existing-file-deletion-on-multiple-file-uploads-in-rails-6/
-    config.active_storage.replace_on_assign_to_many = false
 
     # https://stackoverflow.com/questions/57277351/rails-6-zeitwerknameerror-doesnt-load-class-from-module
     config.autoloader = :classic

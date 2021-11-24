@@ -71,9 +71,8 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.hosts << 'dev-app.truekaso.cl'
-  config.hosts << 'dev-api.truekaso.cl'
   config.hosts << '.ngrok.io'
+  config.hosts << '.gitpod.io'
 
   # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload

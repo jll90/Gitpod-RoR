@@ -28,11 +28,3 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
-en:
-  errors:
-    messages:
-      blank: "no puede estar vacío"
-  states:
-    active: Activo
-    disabled: Desactivado
