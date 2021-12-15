@@ -13,7 +13,7 @@ tasks:
   - init: >
       bundle install
     command: >
-      rails server
+      rails db:migrate && rails server
 vscode:
   extensions:
     - rebornix.ruby
