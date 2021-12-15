@@ -17,7 +17,7 @@ staging:
 
 test:
   <<: *default
-  database: truekaso_test
+  database: postgres_test
 
 production:
   <<: *default
